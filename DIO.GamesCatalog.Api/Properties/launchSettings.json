@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "DIO.GamesCatalog": {
+    "DIO.GamesCatalog.Api": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

@@ -1,6 +1,6 @@
 using System;
 
-namespace DIO.GamesCatalog
+namespace DIO.GamesCatalog.Api
 {
     public class WeatherForecast
     {

@@ -12,7 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
-namespace DIO.GamesCatalog
+namespace DIO.GamesCatalog.Api
 {
     public class Startup
     {
@@ -30,7 +30,7 @@ namespace DIO.GamesCatalog
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "DIO.GamesCatalog", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "DIO.GamesCatalog.Api", Version = "v1" });
             });
         }
 
@@ -41,7 +41,7 @@ namespace DIO.GamesCatalog
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DIO.GamesCatalog v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DIO.GamesCatalog.Api v1"));
             }
 
             app.UseHttpsRedirection();

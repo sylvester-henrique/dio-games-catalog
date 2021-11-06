@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace DIO.GamesCatalog
+namespace DIO.GamesCatalog.Api
 {
     public class Program
     {
