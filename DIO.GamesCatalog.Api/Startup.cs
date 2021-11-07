@@ -1,15 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using DIO.GamesCatalog.Api.Entities;
+using DIO.GamesCatalog.Api.Repositories;
+using DIO.GamesCatalog.Api.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 namespace DIO.GamesCatalog.Api
@@ -32,6 +28,9 @@ namespace DIO.GamesCatalog.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "DIO.GamesCatalog.Api", Version = "v1" });
             });
+            services.AddSingleton<IGameService, GameService>();
+            services.AddSingleton<IRepository<Game>, GameInMemoryRepository>();
+            services.AddAutoMapper(typeof(Program));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
