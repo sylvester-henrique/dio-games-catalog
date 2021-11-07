@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DIO.GamesCatalog.Api</name>
+    </assembly>
+    <members>
+        <member name="M:DIO.GamesCatalog.Api.Controllers.GameController.Post(DIO.GamesCatalog.Api.ApiModels.Game.PostGameRequest)">
+            <summary>
+            Creates a game.
+            </summary>
+        </member>
+        <member name="M:DIO.GamesCatalog.Api.Controllers.GameController.Get">
+            <summary>
+            Get all games.
+            </summary>
+        </member>
+        <member name="M:DIO.GamesCatalog.Api.Controllers.GameController.Get(System.Int32)">
+            <summary>
+            Gets a game by <paramref name="id"/>.
+            </summary>
+            <param name="id">The game id.</param>
+        </member>
+        <member name="M:DIO.GamesCatalog.Api.Controllers.GameController.PatchPrice(System.Int32,System.Double)">
+            <summary>
+            Updates the game price.
+            </summary>
+            <param name="id">The game id.</param>
+            <param name="price">The price to be set for the game.</param>
+        </member>
+        <member name="M:DIO.GamesCatalog.Api.Controllers.GameController.PatchInventory(System.Int32,System.Int32)">
+            <summary>
+            Updates the game inventory.
+            </summary>
+            <param name="id">The game id.</param>
+            <param name="inventory">The inventory count of the game.</param>
+        </member>
+        <member name="M:DIO.GamesCatalog.Api.Controllers.GameController.Delete(System.Int32)">
+            <summary>
+            Deletes a game.
+            </summary>
+            <param name="id">The game id.</param>
+        </member>
+    </members>
+</doc>

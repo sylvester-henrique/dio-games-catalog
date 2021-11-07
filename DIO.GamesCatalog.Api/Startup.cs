@@ -7,11 +7,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System.IO;
 
 namespace DIO.GamesCatalog.Api
 {
     public class Startup
     {
+        private const string ProjectName = "DIO.GamesCatalog.Api";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -26,7 +29,9 @@ namespace DIO.GamesCatalog.Api
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "DIO.GamesCatalog.Api", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = ProjectName, Version = "v1" });
+                var filePath = Path.Combine(System.AppContext.BaseDirectory, $"{ProjectName}.xml");
+                c.IncludeXmlComments(filePath);
             });
             services.AddSingleton<IGameService, GameService>();
             services.AddSingleton<IRepository<Game>, GameInMemoryRepository>();
@@ -40,7 +45,7 @@ namespace DIO.GamesCatalog.Api
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DIO.GamesCatalog.Api v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", $"{ProjectName} v1"));
             }
 
             app.UseHttpsRedirection();

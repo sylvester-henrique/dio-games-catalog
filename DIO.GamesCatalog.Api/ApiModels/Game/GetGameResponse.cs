@@ -10,7 +10,6 @@
         public string Genre { get; set; }
         public string Plataform { get; set; }
         public double? Price { get; set; }
-
         public int? Inventory { get; set; }
     }
 }
