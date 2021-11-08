@@ -9,6 +9,7 @@ namespace DIO.GamesCatalog.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public class GameController : ControllerBase
     {
         private readonly IGameService _gameService;

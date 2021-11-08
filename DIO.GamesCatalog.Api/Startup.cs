@@ -1,4 +1,5 @@
 using DIO.GamesCatalog.Api.Entities;
+using DIO.GamesCatalog.Api.Middlewares;
 using DIO.GamesCatalog.Api.Repositories;
 using DIO.GamesCatalog.Api.Services;
 using Microsoft.AspNetCore.Builder;
@@ -47,6 +48,8 @@ namespace DIO.GamesCatalog.Api
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", $"{ProjectName} v1"));
             }
+
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
 
             app.UseHttpsRedirection();
 
