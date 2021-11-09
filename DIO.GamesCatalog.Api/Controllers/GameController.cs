@@ -73,8 +73,15 @@ namespace DIO.GamesCatalog.Api.Controllers
         /// <param name="price">The price to be set for the game.</param>
         [HttpPatch("{id}/price/{price:double}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> PatchPrice(int id, double price)
         {
+            var game = (await _gameService.ListAsync(id)).SingleOrDefault();
+            if (game is null)
+            {
+                return NotFound();
+            }
+
             await _gameService.UpdatePriceAsync(id, price);
             return Ok();
         }
@@ -86,8 +93,15 @@ namespace DIO.GamesCatalog.Api.Controllers
         /// <param name="inventory">The inventory count of the game.</param>
         [HttpPatch("{id}/inventory/{inventory:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> PatchInventory(int id, int inventory)
         {
+            var game = (await _gameService.ListAsync(id)).SingleOrDefault();
+            if (game is null)
+            {
+                return NotFound();
+            }
+
             await _gameService.UpdateInventoryAsync(id, inventory);
             return Ok();
         }
@@ -98,8 +112,15 @@ namespace DIO.GamesCatalog.Api.Controllers
         /// <param name="id">The game id.</param>
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Delete(int id)
         {
+            var game = (await _gameService.ListAsync(id)).SingleOrDefault();
+            if (game is null)
+            {
+                return NotFound();
+            }
+
             await _gameService.DeleteAsync(id);
             return Ok();
         }
