@@ -20,7 +20,7 @@ namespace DIO.GamesCatalog.Api.ApiModels.Game
         public string Genre { get; set; }
 
         [Required]
-        public string Plataform { get; set; }
+        public string Platform { get; set; }
 
         public double? Price { get; set; }
 

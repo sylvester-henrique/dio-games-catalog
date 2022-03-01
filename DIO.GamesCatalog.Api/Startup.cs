@@ -1,3 +1,4 @@
+using DIO.GamesCatalog.Api.DatabaseContext;
 using DIO.GamesCatalog.Api.Entities;
 using DIO.GamesCatalog.Api.Middlewares;
 using DIO.GamesCatalog.Api.Repositories;
@@ -26,7 +27,6 @@ namespace DIO.GamesCatalog.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -34,9 +34,11 @@ namespace DIO.GamesCatalog.Api
                 var filePath = Path.Combine(System.AppContext.BaseDirectory, $"{ProjectName}.xml");
                 c.IncludeXmlComments(filePath);
             });
-            services.AddSingleton<IGameService, GameService>();
-            services.AddSingleton<IRepository<Game>, GameInMemoryRepository>();
+            services.AddScoped<IGameService, GameService>();
+            services.AddScoped<IRepository<Game>, GameSqlServerRepository>();
             services.AddAutoMapper(typeof(Program));
+
+            services.AddDbContext<GamesCatalogContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

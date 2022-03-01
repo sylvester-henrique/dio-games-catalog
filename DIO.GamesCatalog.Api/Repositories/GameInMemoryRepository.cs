@@ -22,11 +22,11 @@ namespace DIO.GamesCatalog.Api.Repositories
             {
                 Id = 0,
                 Title = "Forza Horizon 5",
-                Year = 2021,
+                Year = "2021",
                 Developer = "Playground Games",
                 Publisher = "Xbox Game Studios",
                 Genre = "Racing",
-                Plataform = "Xbox Series X",
+                Platform = "Xbox Series X",
                 Price = null,
                 Inventory = null
             }
